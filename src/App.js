@@ -1,4 +1,3 @@
-// WeatherApp.js
 import React, { useState } from "react";
 import WeatherDisplay from "./components/WeatherDisplay";
 
@@ -18,7 +17,6 @@ const WeatherApp = () => {
       const response = await fetch(apiUrl);
       const data = await response.json();
 
-      // Extract relevant data from the API response
       const {
         main,
         weather: weatherDetails,
@@ -29,29 +27,33 @@ const WeatherApp = () => {
       const feels_like = main.feels_like;
       const temp_min = main.temp_min;
       const temp_max = main.temp_max;
+      const mainDescription = weatherDetails[0].main;
       const description = weatherDetails[0].description;
       const city = name;
       const dCountry = country;
 
       setWeather({
         temperature,
+        mainDescription,
         description,
         city,
         dCountry,
         feels_like,
         temp_max,
-        temp_min
+        temp_min,
       });
     } catch (error) {
       console.error("Error fetching weather data:", error);
-      // Handle error, e.g., set an error state
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto mt-10 max-w-md p-8 bg-white shadow-md rounded-md flex items-center justify-center">
+    <div
+      className="container mx-auto mt-10 max-w-md p-8 bg-white bg-opacity-60 shadow-md rounded-md flex items-center justify-center"
+      id="container"
+    >
       <div className="w-full">
         <h1 className="text-4xl font-bold mb-8 text-gray-800">Weather App</h1>
         <form

@@ -1,30 +1,10 @@
-// src/WeatherDisplay.js
 import React from "react";
 import { motion } from "framer-motion";
 
-const getBackgroundImage = (description) => {
-  if (!description) {
-    // If description is not available, use a default background
-    return "./assets/default.jpg";
-  }
-
-  // Add more conditions based on your preferred backgrounds
-  if (description.includes("rain")) {
-    return "./assets/rainy.jpg";
-  } else if (description.includes("cloud")) {
-    return "./assets/cloudy.jpg";
-  } else {
-    return "./assets/default.jpg";
-  }
-};
-
-const WeatherDisplay = ({ weather }) => {
-  // Check if weather is undefined or null
+const WeatherDisplay = ({ weather, unit }) => {
   if (!weather) {
-    return null; // or display a loading message or a default component
+    return null;
   }
-
-  const backgroundImage = getBackgroundImage(weather?.description);
 
   return (
     <motion.div
@@ -33,32 +13,54 @@ const WeatherDisplay = ({ weather }) => {
       transition={{ duration: 0.5 }}
       className="mt-4"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundColor: "#87CEEB",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        color: "white", // Adjust text color for better contrast
+        color: "white",
         padding: "20px",
         borderRadius: "10px",
       }}
     >
       <div id="weatherInfo">
-        <div class="card shadow-0 border">
-          <div class="card-body p-4 text-black text-left">
-            <h4 class="mb-1 sfw-normal">
+        <div className="card shadow-0 border">
+          <div className="card-body p-4 text-black text-left">
+            <h4 className="mb-1 font-semibold">
               {weather.city}, {weather.dCountry}
             </h4>
-            <p class="mb-2">
-              Current temperature: <strong>{weather.temperature}°C</strong>
+            <p className="mb-2">
+              Current temperature:{" "}
+              <strong>
+                {unit = "metric"
+                  ? `${weather.temperature}°C`
+                  : `${weather.temperature}°F`}
+              </strong>
             </p>
             <p>
-              Feels like: <strong>{weather.feels_like}°C</strong>
+              Feels like:{" "}
+              <strong>
+                {unit = "metric"
+                  ? `${weather.feels_like}°C`
+                  : `${weather.feels_like}°F`}
+              </strong>
             </p>
             <p>
-              Max: <strong>{weather.temp_max}°C</strong>, Min:{" "}
-              <strong>{weather.temp_min}°C</strong>
+              Max:{" "}
+              <strong>
+                {unit = "metric"
+                  ? `${weather.temp_max}°C`
+                  : `${weather.temp_max}°F`}
+              </strong>
+              , Min:{" "}
+              <strong>
+                {unit = "metric"
+                  ? `${weather.temp_min}°C`
+                  : `${weather.temp_min}°F`}
+              </strong>
             </p>
-            <div class="d-flex flex-row align-items-center">
-              <p class="mb-0 me-4">{weather.description}</p>
+            <div className="flex items-center">
+              <p className="mb-0 mr-4 uppercase font-bold">
+                {weather.mainDescription}  &rArr;  {weather.description}
+              </p>
             </div>
           </div>
         </div>
