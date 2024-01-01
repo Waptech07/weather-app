@@ -50,6 +50,13 @@ const WeatherDisplay = ({ weather }) => {
             <p class="mb-2">
               Current temperature: <strong>{weather.temperature}°C</strong>
             </p>
+            <p>
+              Feels like: <strong>{weather.feels_like}°C</strong>
+            </p>
+            <p>
+              Max: <strong>{weather.temp_max}°C</strong>, Min:{" "}
+              <strong>{weather.temp_min}°C</strong>
+            </p>
             <div class="d-flex flex-row align-items-center">
               <p class="mb-0 me-4">{weather.description}</p>
             </div>

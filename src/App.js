@@ -26,6 +26,9 @@ const WeatherApp = () => {
         sys: { country },
       } = data;
       const temperature = main.temp;
+      const feels_like = main.feels_like;
+      const temp_min = main.temp_min;
+      const temp_max = main.temp_max;
       const description = weatherDetails[0].description;
       const city = name;
       const dCountry = country;
@@ -35,6 +38,9 @@ const WeatherApp = () => {
         description,
         city,
         dCountry,
+        feels_like,
+        temp_max,
+        temp_min
       });
     } catch (error) {
       console.error("Error fetching weather data:", error);
