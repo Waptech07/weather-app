@@ -42,9 +42,19 @@ const WeatherDisplay = ({ weather }) => {
       }}
     >
       <div id="weatherInfo">
-        <p className="text-black">
-        {weather.city}, {weather.dCountry}: {weather.temperature}°C, {weather.description}
-        </p>
+        <div class="card shadow-0 border">
+          <div class="card-body p-4">
+            <h4 class="mb-1 sfw-normal">
+              {weather.city}, {weather.dCountry}
+            </h4>
+            <p class="mb-2">
+              Current temperature: <strong>{weather.temperature}°C</strong>
+            </p>
+            <div class="d-flex flex-row align-items-center">
+              <p class="mb-0 me-4">{weather.description}</p>
+            </div>
+          </div>
+        </div>
       </div>
     </motion.div>
   );
