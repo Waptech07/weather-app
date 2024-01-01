@@ -1,24 +1,38 @@
-import './App.css';
+import React, { useState } from 'react';
+import WeatherDisplay from './WeatherDisplay';
 
-function App() {
+const WeatherApp = () => {
+  const [location, setLocation] = useState('');
+  const [weather, setWeather] = useState(null);
+
+  const getWeather = async () => {
+    // ... (unchanged)
+
+    setWeather({
+      temperature,
+      description,
+      city,
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <h1 className="text-4xl font-bold mb-8">Weather App (React)</h1>
+      <form onSubmit={(e) => { e.preventDefault(); getWeather(); }}>
+        <label htmlFor="locationInput" className="mb-2">Enter Location:</label>
+        <input
+          type="text"
+          id="locationInput"
+          placeholder="City or Country"
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="mb-2 p-2 border border-gray-300 rounded"
+        />
+        <button type="submit">Get Weather</button>
+      </form>
+      <WeatherDisplay weather={weather} />
     </div>
   );
-}
+};
 
-export default App;
+export default WeatherApp;
