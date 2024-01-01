@@ -43,7 +43,7 @@ const WeatherDisplay = ({ weather }) => {
     >
       <div id="weatherInfo">
         <div class="card shadow-0 border">
-          <div class="card-body p-4">
+          <div class="card-body p-4 text-black text-left">
             <h4 class="mb-1 sfw-normal">
               {weather.city}, {weather.dCountry}
             </h4>
