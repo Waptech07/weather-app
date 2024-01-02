@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherDisplay from "./components/WeatherDisplay";
+import Helmet from "react-helmet";
 
 const WeatherApp = () => {
   const [location, setLocation] = useState("");
@@ -54,6 +55,10 @@ const WeatherApp = () => {
       className="container mx-auto mt-10 max-w-md p-8 bg-white bg-opacity-60 shadow-md rounded-md flex items-center justify-center"
       id="container"
     >
+      <Helmet>
+        <title>WeatherApp☁️</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <div className="w-full">
         <h1 className="text-4xl font-bold mb-8 text-gray-800">Weather App</h1>
         <form
